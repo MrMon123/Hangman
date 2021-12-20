@@ -6,6 +6,7 @@ Description: This program will simulate a game of rock paper scissors
 import words_and_clues
 import random
 
+
 # Intro
 dec = input("Welcome to hangman! Enter 'y' if you need an explantion on how to play!".lower()) == "y"
 if dec:
@@ -24,11 +25,18 @@ num = random.randint(1, 5)
 word = words_and_clues.words[num]
 if num == 1:
     print("This word has 7 letters, 2 vowels, no spaces.")
+    chicken = True
+    letters = ['c', 'h', 'i', 'c', 'k', 'e', 'n']
 elif num == 2:
     print("This word has 8 letters (including spaces), 3 vowels, one space.")
+    amongus = True
+    letters = ['a', 'm', 'o', 'n', 'g', 'u', 's']
 elif num == 3:
     print("This word has 5 letters, 2 vowels, no spaces")
+    jesus = True
 elif num == 4:
     print("This word has 8 letters, 3 vowels, no spaces")
+    computer = True
 elif num == 5:
     print("This word has 9 letters, 4 vowels, 1 space")
+    joebiden = True
