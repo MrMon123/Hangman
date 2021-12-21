@@ -6,6 +6,30 @@ Description: This program will simulate a game of rock paper scissors
 import words_and_clues
 import random
 
+wrong_letters = []
+correct_letters = []
+chances = 6
+choices = [1, 2, 3, 4, 5, 6]
+
+
+def checker(numba):
+    if chicken:
+        print(words_and_clues.chicken_clues[numba])
+        choices.remove(numba)
+    elif amongus:
+        print(words_and_clues.amongus_clues[numba])
+        choices.remove(numba)
+    elif jesus:
+        print(words_and_clues.jesus_clues[numba])
+        choices.remove(numba)
+    elif computer:
+        print(words_and_clues.computer_clues[numba])
+        choices.remove(numba)
+    elif joebiden:
+        print(words_and_clues.joebiden_clues[numba])
+        choices.remove(numba)
+    else:
+        print("ERROR: NO BOOLS SELECTED")
 
 def guess():
     if chicken:
@@ -57,23 +81,12 @@ elif num == 4:
 elif num == 5:
     print("This word has 9 letters, 4 vowels, 1 space")
     joebiden = True
-wrong_letters = []
-correct_letters = []
-chances = 6
-choices = [1, 2, 3, 4, 5, 6]
+
 
 while chances > 0:
     run = guess()
     if run == "wrong":
         num = random.randint(1, 6)
         if num in choices:
-            if chicken:
-                print(words_and_clues.chicken_clues[num])
-                choices.remove(num)
-            elif amongus:
-                print(words_and_clues.amongus_clues[num])
-                choices.remove(num)
-            elif jesus:
-                print(words_and_clues.jesus_clues[num])
-                choices.remove(num)
-
+            numba = num
+            checker(numba)
