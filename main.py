@@ -7,16 +7,33 @@ import words_and_clues
 import random
 
 
+def guess():
+    if chicken:
+        guess_user = input("Enter your guess: ")
+        if guess_user in letters:
+            correct_letters.append(guess_user)
+            print("That is correct!")
+            print("")
+            print("Your next clue is;")
+
+        else:
+            wrong_letters.append(guess_user)
+            print("The letter is not apart of the word. Try again!")
+            print("")
+            print("You clue is;")
+            return "wrong"
+
 # Intro
-dec = input("Welcome to hangman! Enter 'y' if you need an explantion on how to play!".lower()) == "y"
+dec = input("Welcome to hangman! Enter 'y' if you need an explanation on how to play!".lower()) == "y"
 if dec:
     print("")
-    print("The word will be randomly choosen each time, and each time you take a guess for a letter and get it")
+    print("The word will be randomly chosen each time, and each time you take a guess for a letter and get it")
     print("wrong the program will give you a clue to the word.")
     print("")
     print("The program will also show you the words you've already used.")
     input("Press enter when your ready to start!")
 
+# Initialization of the game
 print("")
 print("--------------------------------------------------------------------------------------------------------")
 print("")
@@ -40,3 +57,23 @@ elif num == 4:
 elif num == 5:
     print("This word has 9 letters, 4 vowels, 1 space")
     joebiden = True
+wrong_letters = []
+correct_letters = []
+chances = 6
+choices = [1, 2, 3, 4, 5, 6]
+
+while chances > 0:
+    run = guess()
+    if run == "wrong":
+        num = random.randint(1, 6)
+        if num in choices:
+            if chicken:
+                print(words_and_clues.chicken_clues[num])
+                choices.remove(num)
+            elif amongus:
+                print(words_and_clues.amongus_clues[num])
+                choices.remove(num)
+            elif jesus:
+                print(words_and_clues.jesus_clues[num])
+                choices.remove(num)
+
