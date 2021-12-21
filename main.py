@@ -12,22 +12,22 @@ chances = 6
 choices = [1, 2, 3, 4, 5, 6]
 
 
-def checker(numba):
+def checker(choice):
     if chicken:
-        print(words_and_clues.chicken_clues[numba])
-        choices.remove(numba)
+        print(words_and_clues.chicken_clues[choice])
+        choices.remove(choice)
     elif amongus:
-        print(words_and_clues.amongus_clues[numba])
-        choices.remove(numba)
+        print(words_and_clues.amongus_clues[choice])
+        choices.remove(choice)
     elif jesus:
-        print(words_and_clues.jesus_clues[numba])
-        choices.remove(numba)
+        print(words_and_clues.jesus_clues[choice])
+        choices.remove(choice)
     elif computer:
-        print(words_and_clues.computer_clues[numba])
-        choices.remove(numba)
+        print(words_and_clues.computer_clues[choice])
+        choices.remove(choice)
     elif joebiden:
-        print(words_and_clues.joebiden_clues[numba])
-        choices.remove(numba)
+        print(words_and_clues.joebiden_clues[choice])
+        choices.remove(choice)
     else:
         print("ERROR: NO BOOLS SELECTED")
 
@@ -86,7 +86,6 @@ elif num == 5:
 while chances > 0:
     run = guess()
     if run == "wrong":
-        num = random.randint(1, 6)
-        if num in choices:
-            numba = num
-            checker(numba)
+        chances -= 1
+        choice = random.choice(choices)
+
