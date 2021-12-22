@@ -6,49 +6,32 @@ Description: This program will simulate a game of rock paper scissors
 import words_and_clues
 import random
 
+# Sets up the needed variables
 wrong_letters = []
 correct_letters = []
 chances = 6
 choices = [1, 2, 3, 4, 5, 6]
 
-
-def checker(choice):
-    if chicken:
-        print(words_and_clues.chicken_clues[choice])
-        choices.remove(choice)
-    elif amongus:
-        print(words_and_clues.amongus_clues[choice])
-        choices.remove(choice)
-    elif jesus:
-        print(words_and_clues.jesus_clues[choice])
-        choices.remove(choice)
-    elif computer:
-        print(words_and_clues.computer_clues[choice])
-        choices.remove(choice)
-    elif joebiden:
-        print(words_and_clues.joebiden_clues[choice])
-        choices.remove(choice)
-    else:
-        print("ERROR: NO BOOLS SELECTED")
-
+# The function that will allow the user to guess and return if it was right or wrong
 def guess():
-    if chicken:
-        guess_user = input("Enter your guess: ")
-        if guess_user in letters:
-            correct_letters.append(guess_user)
-            print("That is correct!")
-            print("")
-            print("Your next clue is;")
-
-        else:
-            wrong_letters.append(guess_user)
-            print("The letter is not apart of the word. Try again!")
-            print("")
-            print("You clue is;")
-            return "wrong"
+    guess_user = input("Enter your guess: ")
+    # Correct Response
+    if guess_user in letters:
+        correct_letters.append(guess_user)
+        print("That is correct!")
+        print("")
+        print("Your next clue is;")
+        return "correct"
+    # Incorrect response
+    else:
+        wrong_letters.append(guess_user)
+        print("The letter is not apart of the word. Try again!")
+        print("")
+        print("You clue is;")
+        return "wrong"
 
 # Intro
-dec = input("Welcome to hangman! Enter 'y' if you need an explanation on how to play!".lower()) == "y"
+dec = input("Welcome to hangman! Enter 'y' if you need an explanation on how to play! ".lower()) == "y"
 if dec:
     print("")
     print("The word will be randomly chosen each time, and each time you take a guess for a letter and get it")
@@ -64,6 +47,8 @@ print("")
 print("You have 6 guesses.")
 num = random.randint(1, 5)
 word = words_and_clues.words[num]
+
+# Checks which word it got and assigns letters
 if num == 1:
     print("This word has 7 letters, 2 vowels, no spaces.")
     chicken = True
@@ -88,4 +73,16 @@ while chances > 0:
     if run == "wrong":
         chances -= 1
         choice = random.choice(choices)
-
+        choices.remove(choice)
+        if chicken:
+            print(words_and_clues.chicken_clues[choice])
+        elif amongus:
+            print(words_and_clues.amongus_clues[choice])
+        elif jesus:
+            print(words_and_clues.jesus_clues[choice])
+        elif computer:
+            print(words_and_clues.computer_clues[choice])
+        elif joebiden:
+            print(words_and_clues.joebiden_clues[choice])
+        else:
+            print("ERROR: No selected word found or clue")
