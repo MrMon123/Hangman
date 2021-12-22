@@ -11,9 +11,14 @@ wrong_letters = []
 correct_letters = []
 chances = 6
 choices = [1, 2, 3, 4, 5, 6]
+passed_letters = 0
 
 # The function that will allow the user to guess and return if it was right or wrong
 def guess():
+    print("Your correct letters are: " + str(correct_letters))
+    print("Your WRONG letters are: " + str(wrong_letters))
+    print("You have " + str(chances) + " guesses left")
+    print("")
     guess_user = input("Enter your guess: ")
     # Correct Response
     if guess_user in letters:
@@ -86,6 +91,46 @@ while chances > 0:
             print(words_and_clues.joebiden_clues[choice])
         else:
             print("ERROR: No selected word found or clue")
-
-
+    elif run == "correct":
+        passed_letters += 1
+        choice = random.choice(choices)
+        choices.remove(choice)
+        if chicken:
+            if passed_letters == 7:
+                win = True
+                chances = 0
+            else:
+                print(words_and_clues.chicken_clues[choice])
+        elif amongus:
+            if passed_letters == 7:
+                win = True
+                chances = 0
+            else:
+                print(words_and_clues.chicken_clues[choice])
+        elif jesus:
+            if passed_letters == 7:
+                win = True
+                chances = 0
+            else:
+                print(words_and_clues.chicken_clues[choice])
+        elif computer:
+            if passed_letters == 7:
+                win = True
+                chances = 0
+            else:
+                print(words_and_clues.chicken_clues[choice])
+        elif joebiden:
+            if passed_letters == 7:
+                win = True
+                chances = 0
+            else:
+                print(words_and_clues.chicken_clues[choice])
+        else:
+            print("ERROR: No selected word found or clue")
+print("")
+print("")
+if win:
+    print("Congrats you won hang man, the word was " + word + "!")
+else:
+    print("Sorry but you lost! The word was " + word + "!")
 
