@@ -1,5 +1,5 @@
 """
-Description: This program will simulate a game of rock paper scissors
+Description: This program will simulate a game of hangman
 """
 
 # Imports the document with all the words and clues on it
@@ -86,3 +86,6 @@ while chances > 0:
             print(words_and_clues.joebiden_clues[choice])
         else:
             print("ERROR: No selected word found or clue")
+
+
+
